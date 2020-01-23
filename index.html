@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        
+        <!-- No elements in body at the beginning -->
+
+        <script>
+
+            // to add some style properties to body
+            document.body.style.fontFamily = 'Arial';
+            document.body.style.overflow = 'hidden';
+            document.title = 'Login';
+
+            
+            // creating <div> element - 1, that includes form block 
+            var divElem = document.createElement('div');
+            divElem.id = 'div1';
+            divElem.style.width = '500px';
+            divElem.style.background = '#f5f5f5';
+            divElem.style.position = 'absolute';
+            divElem.style.top = '50%';
+            divElem.style.left = '50%';
+            divElem.style.transform = 'translate(-50%, -50%)';
+            divElem.style.transition = 'all 10s linear'; 
+            document.body.appendChild(divElem);
+
+            // creating form
+            var formElem = document.createElement('form');
+            formElem.id = 'form1';
+            formElem.setAttribute('onsubmit', 'submitForm()'); 
+            formElem.setAttribute('autocomplete', 'off'); 
+            formElem.setAttribute('method', 'dialog'); 
+            formElem.style.padding = '20px';
+            formElem.style.background = 'lightblue';
+            document.getElementById('div1').appendChild(formElem);
+
+            // creating <input>  username element
+            var inputElem = document.createElement('input');
+            inputElem.id = 'input1';
+            inputElem.type = 'text';
+            inputElem.name = 'username';
+            inputElem.setAttribute('onchange', 'getValue(this)'); // to get the value of <input> with onchange event
+            inputElem.placeholder = 'Username';
+            inputElem.style.width = '100%';
+            inputElem.style.padding = '15px';
+            inputElem.style.margin = '10px 0';
+            inputElem.style.margin = '10px 0';
+            inputElem.style.fontSize = '15px';
+            inputElem.style.boxSizing = 'border-box';
+            document.getElementById('form1').appendChild(inputElem);
+
+            // creating <input> password element
+            var inputElem2 = document.createElement('input');
+            inputElem2.id = 'input2';
+            inputElem2.type = 'password';
+            inputElem2.name = 'password';
+            inputElem2.setAttribute('onchange', 'getValue(this)'); // to get the value of <input> with onchange event
+            inputElem2.placeholder = 'Password';
+            inputElem2.style.width = '100%';
+            inputElem2.style.padding = '15px';
+            inputElem.style.margin = '10px 0';
+            inputElem2.style.fontSize = '15px';
+            inputElem2.style.boxSizing = 'border-box';
+            document.getElementById('form1').appendChild(inputElem2);
+
+            // creating <button> element
+            var buttonElem = document.createElement('button');
+            buttonElem.innerHTML = 'Login';
+            buttonElem.style.padding = '15px 20px';
+            buttonElem.style.margin = '10px 0';
+            document.getElementById('form1').appendChild(buttonElem);
+
+
+            // creating <div> element - 2, that includes 'welcome' text
+            var divElem2 = document.createElement('div');
+            divElem2.id = 'div2';
+            divElem2.innerHTML = 'Welcome to Home Page';
+            divElem2.style.width = '500px';
+            divElem2.style.background = 'lightblue';
+            divElem2.style.transform = 'translateX(-2000px)';
+            divElem2.style.transition = 'all 1s linear'; 
+            divElem2.style.padding = '50px 20px'; 
+            divElem2.style.textAlign = 'center'; 
+            document.body.appendChild(divElem2);
+           
+
+            // defining global variable    
+            var username, password;
+
+
+            // to get inputs' value as username and password
+            function getValue (event) {
+                console.log(event);
+
+                if (event.name === 'username') {
+                    username = event.value.toLowerCase();
+
+                } else if ( event.name === 'password') {
+                    password = event.value.toLowerCase();
+                }
+                console.log(username, password);
+            }
+
+
+            // to submit the form from login
+            function submitForm () {
+
+                if ( username === 'admin' && password === 'admin') {
+                    // to translate div-1 
+                    document.getElementById('div1').style.transform = 'translateX(2000px)';
+                    document.getElementById('div2').style.position = 'absolute';
+                    document.getElementById('div2').style.top = '50%';
+                    document.getElementById('div2').style.left = '50%';
+                    document.getElementById('div2').style.transform = 'translate(-50%, -50%)';
+                    
+                   
+                   
+                    
+                } else {
+                    alert('Yanlis username veya sifre girdiniz..!');
+                    document.location.reload(true);
+                }
+            }
+
+
+        </script>
+
+
+    </body>
+</html>
